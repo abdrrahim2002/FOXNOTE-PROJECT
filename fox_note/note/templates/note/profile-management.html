@@ -1,0 +1,300 @@
+{% load static %}
+{% load account %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="author" content="Djabali Abderrahim">
+  <meta name="language" content="English">
+  <meta name="viewport" content="width=1080">
+  <meta name="theme-color" content="#FFA500">
+  <meta name="robots" content="index, follow">
+  <meta name="copyright" content="© 2024 FOXNOTE">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+  <meta name="rating" content="General">
+  <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="{% static 'images/icon page.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+
+  <title>FOXNOTE | Profile Management</title>
+
+
+  <link rel="stylesheet" href="{% static "note/css/profile-management.css" %}">
+
+</head>
+<body>
+
+  
+
+
+  <!-- for the title -->
+  <header>
+    <h1>FOXNOTE</h1>
+  </header>
+
+
+  <!-- for the navbar -->
+
+      <!-- for the navbar -->
+      <nav> 
+        <div class="navbar-right-section">
+  
+          <a class="my-notes" href="{% url 'note_account' request.user.username %}" onclick="checkEditing(event)">My notes</a>
+    
+    
+          <button class="my-profile" onclick="toggleDropdown()">
+            Profile
+          </button>
+    
+        </div>
+  
+        <div id="dropdown-menu" class="dropdown-content">
+          <a href="{% url 'profile-management' request.user.username %}" style="border-radius: 15px 15px 0 0;" onclick="checkEditing(event)">profile management <img src="{% static 'note/image/profile.png' %}" alt="profile"></a>
+          <a href="{% url 'account_logout' %}" style="border-radius: 0 0 15px 15px;" onclick="checkEditing(event)">Logout <img src="{% static 'note/image/logout.png' %}" alt="logout"></a>
+        </div>
+      </nav>
+
+
+
+  <!-- for the message popup -->
+  <div class="popup-message-container">
+    {% if messages %}
+        
+      {% for message in messages %}
+
+        <div id="popup-{{ forloop.counter }}" class="popup-message">
+          <span class="message">{{ message }}</span>
+          <button onclick="closePopup('popup-{{ forloop.counter }}')">&times;</button>
+        </div>
+
+      {% endfor %}
+      
+    {% endif %}
+
+
+  </div>
+
+
+
+  <main>
+    <div class="line-1">
+      <h3>user name: {{request.user.username}}</h3>
+
+      {% if user.gender %}
+        {% if user.gender == 'M' %}
+          <img src="{% static "note/image/male.png" %}" alt="Male">
+        {% elif user.gender == 'F' %}
+          <img src="{% static "note/image/female.png" %}" alt="Female">
+        {% endif %}
+      {% endif %}
+
+    </div>
+
+    <div class="line-2">
+      {% if user_age >= 0 %}
+        <p>Age: {{user_age}}</p>
+      {% endif %}
+    </div>
+
+
+    <div class="line-3">
+      <p id="num-notes" class="num-notes" data-count="{{ notes_number }}">number of notes <span>0</span></p>
+
+      <p id="num-tags" class="num-tags" data-count="{{ tags_number }}">number of tags <span>0</span></p>
+    </div>
+
+
+
+
+    {% if user.is_authenticated %}
+    <div class="line-4">
+      <!--for link a third party profile like google-->
+      <!-- check if the user is succesfully linked his account to google or not -->
+
+      {% if social_accounts %}
+        {% for account in social_accounts %}
+          {% if account.provider == "google" %}
+            <div class="tooltip-google-verified">
+              <img src="{% static 'note/image/google.png' %}" alt="google icon">
+              <div class="tooltiptext">Your account is linked with google</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <a class="tooltip-google-not-verified" href="{% url 'socialaccount_connections' %}">
+          <img src="{% static 'note/image/google.png' %}" alt="google icon">
+          <div class="tooltiptext">Your account is not linked with google</div>
+        </a>
+        
+      {% endif %}
+
+      <!--for manage the email -->
+      <!-- i want to make it just for the resend email verification -->
+       
+      {% with email=user.emailaddress_set.first %}
+        {% if email.verified %}
+          <div class="tooltip-email-verified">
+            <img src="{% static 'note/image/email-verified.png' %}" alt="email verified">
+            <div class="tooltiptext">Your email is verified</div>
+          </div>
+        {% else %}
+          <p>Your email is not verified. Please verify your email.</p>
+          <form action="{% url 'account_email_verification_sent' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Verify your email</button>
+          </form>
+        {% endif %}
+      {% endwith %}
+
+      <!--for resert the password-->
+      <a href="{% url 'account_change_password' %}" class="btn btn-primary">reset my password <img src="{% static 'note/image/password-reset.png' %}" alt="email verified successfully"></a>
+    </div>
+
+    <div class="line-5">
+      <!--for let the user can logout-->
+      <a class="logout" href="{% url 'account_logout' %}">Logout <img src="{% static 'note/image/logout.png' %}" alt="logout"></a>
+
+      <!--for deleting profile-->
+      <a href="{% url 'delete_profile' %}" class="btn btn-danger">Delete  <img src="{% static 'note/image/trash.png' %}" alt="Delete"></a>
+    </div>
+
+    {% endif %}
+  </main>
+  
+
+  <!-- footer -->
+  
+
+  <!-- overlay -->
+  <div class="overlay" onclick="close_window()"></div>
+
+
+  <!-- about section -->
+  <div class="about-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>About</h2>
+    <span>FOXNOTE is a free, easy-to-use note-taking platform designed to help you stay organized and productive. Whether you're a student, professional, or just someone looking to jot down thoughts, FoxNote gives you the flexibility to create, edit, and customize your notes from any device. Our goal is to make note-taking as simple and efficient as possible, empowering you to stay focused on what matters most.</span>
+  </div>
+
+    <!-- privacy section -->
+  <div class="privacy-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>Privacy & Policy</h2>
+    <span>We collect minimal personal data to ensure your FOXNOTE experience is smooth and secure. Your information is never shared with third parties except for essential services like authentication. You can request to delete your account and data at any time.</span>
+  </div>
+
+
+  <!-- term section -->
+  <div class="term-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>Terms of Service</h2>
+    <span>By accessing or using FoxNote, you agree to the following terms:</span>
+    <ul>
+      <li><b>User Responsibility:</b> You are responsible for all content you create, share, and manage on FoxNote. Ensure your notes comply with local laws and do not infringe upon third-party rights.</li>
+      <li><b>Privacy:</b> We value your privacy and will not share your data without consent, except as required by law. However, you are responsible for maintaining the confidentiality of your account.</li>
+      <li><b>Modifications:</b> FOXNOTE reserves the right to modify or terminate the service at any time without prior notice. Continued use of the platform after changes implies your acceptance of the new terms.</li>
+    </ul>
+  </div>
+
+
+  <footer class="footer">
+      <div class="footer-container">
+          <!-- Left Section: About & Links -->
+          <div class="footer-left">
+              <h3>FOXNOTE</h3>
+              <p>FOXNOTE is your free, secure, and customizable note-taking platform. Organize your thoughts and ideas effortlessly with our simple interface and powerful tools.</p>
+
+              <ul class="footer-links">
+                  <li><a class="about-link" href="#" onclick="show_window(event, 'about-window')">About</a></li>
+                  <li><a class="privacy-link" href="#" onclick="show_window(event, 'privacy-window')">Privacy & Policy</a></li>
+                  <li><a class="term-link" href="#" onclick="show_window(event, 'term-window')">Terms of Service</a></li>
+              </ul>
+          </div>
+
+          <!-- Middle Section: Contact Info -->
+          <div class="footer-middle">
+              <h4>Contact Us</h4>
+              <p>Email: <a href="mailto:official.foxnote@gmail.com">official.foxnote@gmail.com</a></p>
+          </div>
+
+          <!-- Right Section: Social Media -->
+          <div class="footer-right">
+              <h4>Connect with Us</h4>
+              <a href="https://www.linkedin.com/in/djabali-abderrahim-179615257/" target="_blank">
+                  <img src="{% static 'home/images/linkedin.svg' %}" alt="LinkedIn" class="social-icon">
+              </a>
+              <!-- Add other social media icons here if needed -->
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p>© <span class="current-year"></span> FoxNote. All Rights Reserved.</p>
+      </div>
+  </footer>
+
+
+
+  <!-- todo the animation of removing popup message -->
+  <script src="{% static "note/javascript/profile-management.js" %}"></script>
+
+
+
+  <script> 
+
+    //generate the year automatucaly 
+
+    // Get the current year
+    const year = new Date().getFullYear();
+
+    // Set the year in the footer
+    document.querySelector('.current-year').textContent = year;
+
+
+
+
+
+    //showing the about window
+    function show_window (event, target) {
+      //block normal processe of the bottom
+      event.preventDefault();
+
+      //target the ncessary
+      const window = document.querySelector(`.${target}`);
+      const overlay = document.querySelector('.overlay');
+
+      //do the action 
+      window.classList.add('show');
+      overlay.classList.add('show');
+    }
+
+
+
+    //function to close the window
+    function close_window () {
+      //select the elements
+      const overlay = document.querySelector('.overlay');
+      const about = document.querySelector('.about-window');
+      const term = document.querySelector('.term-window');
+      const privacy = document.querySelector('.privacy-window');
+
+      //do the action
+      overlay.classList.remove('show');
+      about.classList.remove('show');
+      term.classList.remove('show');
+      privacy.classList.remove('show');
+    }
+
+
+
+    setTimeout(() => {
+      document.body.style.visibility = "visible";
+      document.body.style.opacity = "1";  // This will trigger the fade-in effect
+    }, 3000)
+  </script>
+
+</body>
+</html>

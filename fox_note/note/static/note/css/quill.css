@@ -1,0 +1,263 @@
+.ql-toolbar {
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  border: solid 2px !important;
+  border-bottom: none !important;
+  background: white;
+  width: 90%;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  z-index: 10;
+}
+
+
+#form-note {
+  font-size: 1.3rem;
+
+  padding: 20px;
+  padding-bottom: 25px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  border: solid 2px !important;
+  border-top: solid 0.5px !important;
+  background-color: white;
+
+  width: 90%;
+  height: fit-content;
+  max-height: 550px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+
+
+.ql-editor {
+  white-space: pre-wrap !important;  
+  word-wrap: break-word !important;
+}
+
+
+.ql-blank::before {
+  margin-left: 17px;
+}
+
+.ql-picker {
+  width: 120px !important;
+  color: black !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  height: 28px !important;
+}
+
+
+.ql-selected {
+  color: #f29c1f !important;
+}
+
+
+
+.ql-snow.ql-toolbar .ql-picker-label.ql-active {
+  color: black !important;
+}
+
+.ql-snow.ql-toolbar .ql-picker-label:hover {
+  color: black !important;
+}
+
+
+
+/* customize the toolbar */
+.ql-snow .ql-stroke {
+
+  stroke: rgb(0, 0, 0) !important;
+}
+
+.ql-snow.ql-toolbar button:hover svg polygon {
+
+  stroke: rgb(255, 255, 255) !important;
+}
+
+
+.ql-snow.ql-toolbar button:hover svg path {
+  stroke: rgb(255, 255, 255) !important; /* Change to white on hover */
+}
+
+.ql-snow.ql-toolbar button[aria-label="strike"]:hover svg path {
+  fill: rgb(255, 255, 255) !important; /* Change to white on hover */
+}
+
+
+
+.ql-snow.ql-toolbar button:hover svg rect {
+  fill: white !important; /* Change to white on hover */
+  
+}
+
+.ql-snow.ql-toolbar button:hover svg line {
+  fill: white !important; /* Change to white on hover */
+  stroke: white !important;
+}
+
+.ql-snow.ql-toolbar button:hover svg polyline {
+  fill: white !important; /* Change to white on hover */
+  stroke: white !important;
+}
+
+
+.ql-picker-label:hover svg line {
+  fill: white !important; /* Change to white on hover */
+  stroke: white !important;
+}
+
+
+
+
+.ql-snow.ql-toolbar button[aria-label="direction: rtl"]:hover svg path {
+  fill: white !important;
+}
+
+
+.ql-snow.ql-toolbar button[aria-label="script: sub"]:hover svg path, .ql-snow.ql-toolbar button[aria-label="script: super"]:hover svg path {
+  fill: white !important;
+}
+
+
+
+.ql-icon-picker {
+  border: none;
+  border-radius: 10px;
+  padding-right: 36px;
+  transition: all 0.3s ease;
+}
+
+
+.ql-icon-picker:hover {
+  background-color: #f29c1f;
+}
+
+
+
+
+.ql-snow.ql-toolbar button {
+  border: none;
+  border-radius: 10px;
+  height: 33px !important;
+  padding-right: 30px !important;
+}
+
+.ql-snow.ql-toolbar button:hover  {
+  background-color: #f29c1f;
+  transition: all 0.3s ease;
+
+}
+
+.ql-snow.ql-toolbar button:active {
+  transform: scale(0.8) ;
+  
+}
+
+
+
+
+
+
+
+
+
+.ql-picker-label svg {
+  width: 28px;
+}
+
+
+
+.ql-snow .ql-icon-picker {
+  width: 28px !important;
+  height: 33px !important;
+}
+
+
+.ql-picker-label:hover {
+  
+  transition: all 0.3s ease;
+}
+
+.ql-picker-label:active {
+  scale: (0.8);
+}
+
+
+
+.ql-stroke .ql-fill, .ql-fill {
+  fill: black !important;
+}
+
+
+
+
+.ql-color-picker {
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  width: 37px !important;
+  height: 33px !important;
+  margin-right: 10px;
+}
+
+.ql-color-picker:hover {
+  background-color: #f29c1f;
+}
+
+
+.ql-color-picker:hover svg line {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.ql-color-picker:hover svg polyline {
+  stroke: white !important;
+
+}
+
+
+.ql-color-picker:hover .ql-picker-label svg g {
+  fill: white !important;
+}
+
+
+
+
+.ql-blockquote {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.ql-blockquote:hover svg  rect {
+  stroke: white !important;
+  fill: white !important;
+}
+
+
+.ql-blockquote:hover svg  path {
+  stroke: white !important;
+  fill: white !important;
+}
+
+
+
+.ql-picker-label {
+  height: 33px;
+  border: none !important;
+  outline: none;
+}
+
+
+.ql-expanded:active, .ql-color-picker:active {
+  outline: none !important;
+  border: none !important;
+}
+
+

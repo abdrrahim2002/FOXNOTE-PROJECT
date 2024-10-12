@@ -1,0 +1,583 @@
+#notes {
+  justify-self: center;
+  width: 85%;
+  background: rgb(255, 255, 255);
+  margin-bottom: 50px;
+  margin-top: 150px;
+}
+
+#notes .note-container {
+  padding: 30px;
+  padding-bottom: 60px;
+  background-color: white;
+  border: solid black 4px;
+  margin-bottom: 30px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  position: relative;
+  border-radius: 38px;
+}
+
+
+#notes .note-container h2 {
+  width: 50%;
+  margin-left: 4rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+
+#notes .note-container ul {
+  display: flex;
+  gap: 30px;
+  margin-left: 4rem;
+  flex-wrap: wrap;
+  width: 70%;
+  margin-bottom: 50px;
+}
+
+#notes .note-container ul li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+
+
+
+/* animated the list element */
+#notes .note-container ul li{
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffff;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+  cursor: default;
+}
+
+
+
+#notes .note-container ul li:hover {
+  transform: scale(1.05);
+}
+
+#notes .note-container ul li:hover .icon {
+  transform: translate(4px);
+}
+
+#notes .note-container ul li:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+#notes .note-container ul li::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+
+
+
+
+/* for randomize the background color of the list element */
+.red-background {
+  background: violet;
+}
+
+.blue-background {
+  background-color: #039be5;
+}
+
+.orange-background {
+  background-color: #f29c1f;
+}
+
+.gray-background {
+  background: rgb(53, 163, 53);
+}
+
+.brown-background {
+  background: rgb(170, 52, 52);
+}
+
+
+
+
+
+/* styling the note content */
+
+
+
+#notes .note-container .quill-content {
+  font-size: 1.3rem;
+
+  padding: 20px;
+  padding-bottom: 25px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  border-radius: 13px;
+  border: solid 2px;
+  background-color: white;
+
+  width: 90%;
+  height: fit-content;
+  max-height: 550px;
+  overflow-y: auto;
+  overflow-x: auto;
+
+  transition: all 0.3s ease;
+}
+
+
+
+.quill-activate-editing {
+  border-top: solid 0.5px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  transition: all 0.3s ease;
+}
+
+
+
+
+/* edit the edit buttons */
+#notes .note-container .buttons-edit-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+}
+
+#notes .note-container .buttons-edit-container .edit-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  color: #f1f1f1;
+  padding: 5px 10px 5px 12px;
+  border-radius: 15px;
+  border: solid 2px black;
+}
+
+#notes .note-container .buttons-edit-container img {
+  width: 40px;
+}
+
+#notes .note-container .buttons-edit-container .edit-button .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 0 5px 1px #0000001f inset; 
+  color: #282828;
+  text-align: center;
+  border-radius: 15px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+
+}
+
+#notes .note-container .buttons-edit-container .edit-button:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+
+#notes .note-container .buttons-edit-container .edit-button:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#notes .note-container .buttons-edit-container .edit-button .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #28282817 transparent transparent transparent;
+  transform: translateX(-50%);
+}
+
+
+/* hide the cancel, update, delete buttom */
+
+#notes .note-container .buttons-edit-container .cancel-button, #notes .note-container .buttons-edit-container .update-button, #notes .note-container .buttons-edit-container .delete-button {
+  transform: translate(0%, -10%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 7px;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+
+  background: white;
+}
+
+
+.show-edits-buttons {
+  transform: translate(0%, 0%) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: all 3s ease;
+  cursor: pointer;
+}
+
+
+.show-edits-buttons:hover {
+  background-color: rgb(211, 211, 211) !important;
+}
+
+.show-edits-buttons:active {
+  transform: scale(0.9) !important;
+}
+
+
+
+/* styling the selection checkboxes */
+
+.clear {
+  clear: both;
+}
+
+
+.checkBox {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px #fff;
+  position: absolute;
+  top: 80px;
+  left: -70px;
+  border: solid black;
+}
+
+.checkBox div {
+  width: 60px;
+  height: 60px;
+  background-color: orange;
+  top: -52px;
+  left: -52px;
+  position: absolute;
+  transform: rotateZ(45deg);
+  z-index: 100;
+}
+
+.checkBox input[type=checkbox]:checked + div {
+  left: -10px;
+  top: -10px;
+}
+
+.checkBox input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  visibility: hidden;
+}
+
+.transition {
+  transition: 300ms ease;
+}
+
+
+
+
+/* styling the update title form */
+.update-title-form {
+  position: absolute;
+  top: 67px;
+  display: flex;
+  left: 98px;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.update-title-form p {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.update-title-form input {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5rem;
+
+  width: 50%;
+
+  border: solid 2px black;
+  border-radius: 12px;
+  padding: 5px 15px;
+}
+
+
+.update-title-form input:focus {
+  outline: none;
+}
+
+
+/* stylin the note content position */
+.quill-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+
+
+
+/* stylin the date on the bottom of the quill content */
+
+#notes .note-container .date-creation {
+  position: absolute;
+  right: 50px;
+  
+}
+
+
+/* styling the show more button */
+.pushable-show-more {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 60px;
+  display: none;
+}
+
+.shadow-show-more {
+  background: green;
+}
+
+.edge-show-more {
+  background: linear-gradient( to right, green 0%, green 8%, green 92%, green 100% );
+}
+
+.front-show-more {
+  background: green;
+}
+
+
+
+
+/* styling the footer */
+
+footer {
+  grid-area: footer;
+  margin-top: 60px;
+  height: 300px;
+  width: 100%;
+  position: initial;
+  bottom: 0;
+  background-color: lightcoral;
+}
+
+
+
+
+/* styling the window that show if the user try to do somthing and he is in the edit mode acitvated */
+.edit-window-popup {
+  position: fixed;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: white;
+  width: 60%;
+  padding: 30px 60px;
+  border: solid black 2px;
+  border-radius: 15px;
+  z-index: 200;
+  transition: all 1s ease;
+}
+
+.edit-window-popup-show {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+
+
+.edit-window-popup .close-button {
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
+
+.edit-window-popup p {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-size: 1rem;
+  width: 80%;
+  margin: 100px 0;
+}
+
+.edit-window-popup .cancel-edit {
+  background-color: #e73f37;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-size: 1rem;
+}
+
+.edit-window-popup .cancel-edit:hover {
+  background-color: hwb(3 24% 18%);
+}
+
+.edit-window-popup .cancel-edit:active {
+  transform: scale(0.9);
+}
+
+
+
+.edit-window-popup .update-edit {
+  background-color: #21bf50;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-size: 1rem;
+}
+
+.edit-window-popup .update-edit:hover {
+  background-color: hwb(138 13% 30%);
+}
+
+.edit-window-popup .update-edit:active {
+  transform: scale(0.9);
+}
+
+
+
+
+.edit-window-popup .continue-edit {
+  background-color: #f29c1f;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-size: 1rem;
+}
+
+.edit-window-popup .continue-edit:hover {
+  background-color: hwb(36 12% 10%);
+}
+
+.edit-window-popup .continue-edit:active {
+  transform: scale(0.9);
+}
+
+
+.edit-window-popup img {
+  position: absolute;
+  right: 5%;
+  top: 21%;
+  width: 16%;
+}
+
+
+/* custimize the end-showmore-message */
+
+#end-showmore-message {
+  text-align: center;
+  font-size: 1.5rem;
+
+}
+
+#end-showmore-message span {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.no-note-message img {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 20%;
+}

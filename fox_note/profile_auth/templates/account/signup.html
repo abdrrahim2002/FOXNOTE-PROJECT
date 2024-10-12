@@ -1,0 +1,94 @@
+{% load static %}
+{% load allauth i18n %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Djabali Abderrahim">
+    <meta name="language" content="English">
+    <meta name="viewport" content="width=1080">
+    <meta name="theme-color" content="#FFA500">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="© 2024 FOXNOTE">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+    <meta name="rating" content="General">
+    <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+  
+    <!-- Favicon and Icons -->
+    <link rel="icon" href="{% static 'images/icon page.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+  
+    <title>FOXNOTE | Sing up</title>
+  
+
+
+
+    <link rel="stylesheet" href="{% static "account/css/singup.css" %}">
+</head>
+
+
+{% block content %}
+    <header>
+        <h1>FORXNOTE</h1>
+    </header>
+
+<div class='main'>
+
+    <div class="signup">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32"><path fill="black" d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5"/><path fill="black" d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2m7.993 22.926A5 5 0 0 0 19 20h-6a5 5 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0"/></svg>
+        
+        <div class="signup-from">
+            <div class="form-title">
+                {% element h2 %}
+                    {% trans "Sign Up" %}
+                {% endelement %}
+            </div>
+
+            {% setvar link %}
+                <a href="{{ login_url }}">
+                {% endsetvar %}
+                {% setvar end_link %}
+                </a>
+            {% endsetvar %}
+            {% element p %}
+                {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
+            {% endelement %}
+            {% if not SOCIALACCOUNT_ONLY %}
+                {% url 'account_signup' as action_url %}
+                {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+                    {% slot body %}
+                        {% csrf_token %}
+                        {% element fields form=form unlabeled=True %}
+                        {% endelement %}
+                        {{ redirect_field }}
+                    {% endslot %}
+                    {% slot actions %}
+                        {% element button tags="prominent,signup" type="submit" %}
+                            {% trans "Sign Up" %}
+                        {% endelement %}
+                    {% endslot %}
+                {% endelement %}
+            {% endif %}
+        </div>
+
+
+        <div class="signup-from-socialaccount">
+            {% if SOCIALACCOUNT_ENABLED %}
+                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            {% endif %}
+        </div>
+        
+    </div>
+    
+</div>
+{% endblock content %}
+
+
+<script src="{% static 'account/js/password_change.js' %}"></script>
+<script>
+    setTimeout(() => {
+        document.body.style.visibility = "visible";
+        document.body.style.opacity = "1";  // This will trigger the fade-in effect
+      }, 2000);
+</script>

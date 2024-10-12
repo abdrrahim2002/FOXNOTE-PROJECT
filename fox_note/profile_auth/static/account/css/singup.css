@@ -1,0 +1,439 @@
+/* import the header font family */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+/* import the regular font */
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+
+/* styling the body */
+body {
+  background: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header'
+    'signup_form'
+  ;
+  margin: 0;
+  padding: 0;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s ease;  /* Optional: Fade-in effect */
+}
+
+
+body::before {
+  content: ''; /* Necessary for pseudo-elements */
+  position: absolute; /* Position it absolutely to cover the entire body */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/background/wave type 1.svg'); /* Your SVG background image */
+  background-size: cover; /* Ensure the image covers the pseudo-element */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the background image */
+  opacity: 1; /* Start with the background image hidden */
+  z-index: -1; /* Place it behind other content */
+  /* animation: fadeIn 0.5s cubic-bezier(.47,0,.74,.71) forwards; */ /* Animate the opacity */
+  animation: wipe 2s cubic-bezier(.55,.06,.68,.19) forwards 2s;
+}
+
+
+@keyframes wipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* styling the head */
+
+/* styling the header */
+header {
+  grid-area: header;
+}
+
+header h1 {
+  font-size: 4rem;
+  color: #f29c1f; /* Orange color for FOXNOTE */
+  margin-bottom: 20px;
+  font-family: "Caveat Brush", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 75;
+  margin: 0;
+  margin-left: 35px;
+}
+
+
+/* style the main */
+.main {
+  grid-area: signup_form;
+  position: relative;
+  height: 100vh;
+  margin-top: 6rem;
+}
+
+/* styling the form */
+.signup {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  height: fit-content;
+  width: 70%;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.088) 76%, rgba(255, 255, 255, 0.296) 100%);
+  backdrop-filter: blur(5px);
+
+  box-shadow: 0px 0 25px 0px #ffffff59 inset;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* styling the icon of login */
+.signup svg {
+  font-size: 7rem;
+  position: absolute;
+  left: 50%;
+  top: -7%;
+  transform: translate(-50%);
+}
+
+
+/* style the normal path of login */
+
+.signup-from {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* styling the title of the signup form */
+
+.signup-title {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  margin: 50px;
+}
+
+
+.form-title h2 {
+  font-size: 2rem;
+  margin-left: 30px;
+}
+
+
+
+/* styling the true form XD */
+.signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.signup form input {
+  border: solid 2px black;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 10px 15px;
+  width: 40%;
+}
+
+.signup form input:focus {
+  outline: none;
+}
+
+
+/* styling the 1st child div */
+
+form div:nth-child(2) {
+  margin-bottom: 20px;
+}
+
+
+/* styling the 2nd child div */
+
+form div:nth-child(3) {
+  margin-bottom: 20px;
+}
+
+
+
+/* styling the 3th child div */
+
+form div:nth-child(4) {
+  margin-bottom: 20px;
+}
+
+
+
+/* style the help text */
+form div:nth-child(4) div:nth-child(2){
+  position: absolute;
+  top: -37%;
+  right: 24%;
+}
+
+/* Tooltip container */
+.tooltip-container {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Icon styling */
+.icon {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* SVG Animation: Rotate and scale effect */
+.icon svg {
+  transition: transform 0.5s ease-in-out;
+  top: 0;
+  left: 0;
+}
+
+
+/* Tooltip styling */
+.tooltip {
+  visibility: hidden;
+  width: 14rem;
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  opacity: 0;
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+  transform: translateY(186%);
+  font-size: 0.8rem;
+
+  border: solid 2px black;
+  border-radius: 10px;
+  height: fit-content;
+  color: black;
+  background: rgb(255, 255, 255) !important;
+  transform: translateY(20%) translateX(50%);
+
+}
+
+/* Tooltip Arrow */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: rotate(180deg);
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(20%) translateX(50%);
+}
+
+
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(20%) translateX(50%);
+  animation: all 0.6s ease;
+
+}
+
+
+
+.tooltip ul {
+  text-align: start;
+  padding-left: 25px;
+}
+
+
+
+/* styling the 4th child div */
+
+form div:nth-child(5) {
+  margin-bottom: 20px;
+}
+
+
+
+
+/* styling the 5th child div */
+
+form div:nth-child(6) {
+  margin-bottom: 20px;
+}
+
+form div:nth-child(6) input {
+  width: fit-content;
+}
+
+
+/* styling the 6th div */
+form div:nth-child(7) {
+  margin-bottom: 20px;
+}
+
+form div:nth-child(7) select{
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+
+/* style the submit buttom */
+form button {
+  width: fit-content;
+  align-self: center;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  color: black;
+  background-color: whitesmoke;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+
+form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+form button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+form button::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+form button::after {
+  background-color: #fff;
+}
+
+form button:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+
+
+/* styling the theard partie methode */
+
+.signup-from-socialaccount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.signup-from-socialaccount ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.signup-from-socialaccount a::before {
+  content: '';
+  display: inline-block;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 preserveAspectRatio=%22xMidYMid%22 viewBox=%220 0 256 262%22%3E%3Cpath d=%22M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027%22 fill=%22%234285F4%22/%3E%3Cpath d=%22M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1%22 fill=%22%2334A853%22/%3E%3Cpath d=%22M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782%22 fill=%22%23FBBC05%22/%3E%3Cpath d=%22M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251%22 fill=%22%23EB4335%22/%3E%3C/svg%3E');
+  background-size: 26px;
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+  padding-top: 1px;
+}
+
+.signup-from-socialaccount a {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: black;
+  vertical-align: middle;
+  border: solid black 2px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background: white;
+  font-weight: bold;
+}
+
+.signup-from-socialaccount a:active {
+  color: black;
+  transform: scale(0.9);
+}
+
+
+
+.signup-from-socialaccount a:hover {
+  background: rgb(226, 226, 226);
+}
+
+
+
+
+/* style the error message */
+.errorlist {
+  list-style: none;
+  padding-left: 0;
+  color: rgb(184, 67, 67);
+}

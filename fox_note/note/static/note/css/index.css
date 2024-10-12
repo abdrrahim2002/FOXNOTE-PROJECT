@@ -1,0 +1,868 @@
+/* import the header font family */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+/* import the regular font */
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+
+/* styling the body */
+body {
+  background: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header'
+    'navbar'
+    'messages'
+    'main'
+    'footer'
+  ;
+
+  margin: 0;
+  padding: 0;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s ease;  /* Optional: Fade-in effect */
+
+}
+
+
+
+/* styling the header */
+header {
+  grid-area: header;
+}
+
+header h1 {
+  font-size: 4rem;
+  color: #f29c1f; /* Orange color for FOXNOTE */
+  margin-bottom: 20px;
+  font-family: "Caveat Brush", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 75;
+  margin: 0;
+  margin-left: 35px;
+}
+
+
+
+/* nav bar */
+nav {
+  position:sticky;
+  height: fit-content;
+  top: 0px;
+
+  background-color: #8B9FB5;
+  grid-area: navbar;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.088) 76%, rgba(255, 255, 255, 0.296) 100%);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0 5px 1px #0000001f inset;
+
+  width: 90%;
+  border: none;
+  border-radius: 50px;
+  justify-self: center;
+
+  padding: 12px 0 12px 0;
+
+  z-index: 100;
+
+}
+
+
+
+.navbar-left-section {
+  display: flex;
+}
+
+/* buttons */
+nav .select-button {
+  left: 2rem;
+}
+
+nav .search-button {
+  left: -4rem;
+}
+
+nav .create-note {
+  left: -4rem;
+}
+
+nav .delete-selection {
+  right: -2rem;
+  display: none;
+  transition: all 2s ease;
+}
+
+nav .select-all-selection {
+  right: -2rem;
+  display: none;
+  transition: all 2s ease;
+}
+
+nav .cancel-selection {
+  right: -2rem;
+  display: none;
+  transition: all 2s ease;
+}
+
+
+
+nav .select-button, nav .search-button, nav .create-note, nav .delete-selection, nav .select-all-selection, nav .cancel-selection {
+  position: relative;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: black;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+nav .select-button:before, nav .search-button:before, nav .create-note:before, nav .delete-selection:before, nav .select-all-selection:before, nav .cancel-selection:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Start from the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  display: block;
+  border-radius: 50px;
+  background: #f29c1f;
+  width: 0px;
+  height: 5px;
+  transition: all 0.3s cubic-bezier(.18,.89,.32,1.28);
+  z-index: -1;
+}
+
+
+
+nav .select-button:hover:before, nav .search-button:hover:before, nav .create-note:hover:before, nav .delete-selection:hover:before, nav .select-all-selection:hover:before, nav .cancel-selection:hover:before {
+  width: 100%;
+  height: 100%;
+  background: #f29c1f;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0 4px 2px #fff inset;
+  z-index: -1;
+}
+
+nav .select-button:active, nav .search-button:active, nav .create-note:active, nav .delete-selection:active, nav .select-all-selection:active, nav .cancel-selection:active {
+  transform: scale(0.95);
+}
+
+
+
+
+
+
+.navbar-right-section {
+  display: flex;
+}
+/* buttons of links */
+
+.my-notes {
+  left: -4rem;
+}
+
+.my-tags {
+  left: -4rem;
+}
+
+.my-notes, .my-tags {
+  position: relative;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  color: black;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.my-notes:active, .my-tags:active {
+  color: black;
+}
+
+.my-notes:before, .my-tags:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Start from the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  display: block;
+  border-radius: 50px;
+  background: #f29c1f;
+  width: 0px;
+  height: 5px;
+  transition: all 0.3s cubic-bezier(.18,.89,.32,1.28);
+  z-index: -1;
+}
+
+
+
+.my-notes:hover:before, .my-tags:hover:before {
+  width: 100%;
+  height: 100%;
+  background: #f29c1f;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0 4px 2px #fff inset;
+  z-index: -1;
+}
+
+.my-notes:active, .my-tags:active {
+  transform: scale(0.95);
+}
+
+.my-profile {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+
+  position: relative;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50px;
+  right: 3rem;
+
+  background: #f29c1f;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0 4px 2px #fff inset;
+}
+
+.my-profile:active {
+  transform: scale(0.95);
+}
+
+
+
+
+/* drop menu */
+
+/* Dropdown menu content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.088) 76%, rgba(255, 255, 255, 0.296) 100%);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0 5px 1px #0000001f inset;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 70px; /* Position below the button */
+  right: 30px;
+  border: none;
+  border-radius: 15px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.dropdown-content a:active {
+  color: black;
+}
+
+/* Hover effect for the dropdown links */
+.dropdown-content a:hover {
+  background-color: #67676745;
+}
+
+.dropdown-content a img {
+  width: 40px;
+  margin-left: 15px;
+}
+
+
+
+
+
+/* for hide and show the toolbar */
+.toolbar-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(0%,100%);
+
+}
+
+/* Final state: toolbar is in its normal position */
+.toolbar-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0%,0%);
+  transition: all 0.5s ease;
+}
+
+
+
+/*custimize the forms*/
+.forms {
+  display: flex;
+  flex-direction: row;
+  margin: 100px;
+
+}
+
+#id_tag option:checked {
+  background-color: #3399ff; /* or your preferred color */
+  color: white;
+}
+
+
+
+/* for forms background */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 199;
+}
+
+
+
+
+/* for the search form */
+.search-form {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  background-color: white;
+  padding: 30px;
+  padding-top: 15px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0px 0 5px 1px #0000001f inset;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 200;
+
+}
+
+
+.active-search {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+}
+
+
+
+/* content inside the search form */
+.close-button {
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 0px 10px;
+  border-radius: 8px;
+  border: solid 2px;
+  background-color: hsl(16, 100%, 66%);
+  font-size: 1.5rem;
+}
+
+.close-button:hover {
+  background-color: rgb(255, 93, 34);
+}
+
+.search-form-label {
+  font-size: 1.3rem;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.search-form label {
+  font-size: 1.3rem;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+#search-mode {
+  background-color: white;
+  border: solid 2px;
+  cursor: pointer;
+  margin: 14px 0px;
+  padding: 5px;
+  border-radius: 8px;
+  width: fit-content;
+  font-size: 1rem;
+
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+#search-mode .option {
+  cursor: pointer;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+
+
+#title-search, #tag-search, #advanced-search{
+  place-self: center;
+}
+
+#advanced-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.tag-label {
+  padding-right: 8px;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* for the input of title */
+#title-input, #tag-input, #advanced-title-input, #advanced-tag-input {
+  border: solid 2px black;
+  border-radius: 12px;
+  padding: 5px 15px;
+  margin: 15px 0;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+#title-input:focus, #tag-input:focus, #advanced-title-input:focus, #advanced-tag-input:focus{
+  outline: none;
+}
+
+
+.error-message {
+  margin-bottom: 15px;
+  color: red;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+}
+
+
+
+
+
+.active-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+/* for the search button */
+
+.pushable {
+  width: fit-content;
+  align-self: center;
+  position: relative;
+  background: transparent;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  outline-offset: 4px;
+  outline-color: deeppink;
+  transition: filter 250ms;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #f29c1f;
+  border-radius: 8px;
+  filter: blur(2px);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  background: linear-gradient(
+    to right,
+    #f29c1f 0%,
+    #f29c1f 8%,
+    #f29c1f 92%,
+    #f29c1f 100%
+  );
+}
+
+.front {
+  display: block;
+  position: relative;
+  border-radius: 8px;
+  background: #f29c1f;
+  padding: 16px 32px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.pushable:hover {
+  filter: brightness(110%);
+}
+
+.pushable:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.front .search-icon{
+  width: 1rem;
+  filter: invert(100%);
+  vertical-align: sub;
+}
+
+.pushable:hover .search-icon {
+  color: white;
+}
+
+.pushable:hover .shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+/*cancel button serach*/
+
+#cancel-search-button {
+    background: none;
+    border: solid 2px black;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background: none;
+    border: solid 2px black;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#cancel-search-button:active {
+    transform: translate(-50%) scale(0.8);
+}
+
+
+
+
+
+
+
+/* style the footer */
+/* footer */
+/* Footer General Styling */
+.footer {
+  margin-top: 200px;
+  grid-area: footer;
+  background-color: #f29c1f;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  height: fit-content;
+  width: auto;
+}
+
+
+@media (max-width: 600px) {
+    footer {
+        width: 100% !important;
+    }
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px 20px;
+}
+
+/* Footer Left Section */
+.footer-left h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.footer-left p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Middle Section */
+.footer-middle h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-middle p a {
+  color: #666; /* Orange for email link */
+  text-decoration: none;
+}
+
+.footer-middle p a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Right Section */
+.footer-right h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  filter: brightness(0) invert(1); /* Make icon white */
+}
+
+.social-icon:hover {
+  filter: brightness(0.5) invert(1);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 14px;
+}
+
+
+
+
+
+/* styling the about window */
+.show{
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 199;
+}
+
+.overlay.visible-window {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s ease;
+}
+
+.about-window, .privacy-window, .term-window {
+  width: 75%;
+  justify-self: center;
+  background: white;
+  border-radius: 18px;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  padding-bottom: 68px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 200;
+  transition: all ease 1s;
+}
+
+
+.about-window button, .privacy-window button, .term-window button {
+  font-size: 2rem;
+  font-weight: bold;
+  background: rgb(255, 94, 94);
+  margin: 0;
+  padding: 4px 14px;
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  right: 33px;
+  top: 33px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.about-window button:hover, .privacy-window button:hover, .term-window button:hover {
+  background-color: rgb(255, 24, 24);
+}
+
+.about-window button:active, .privacy-window button:active, .term-window button:active {
+  transform: scale(0.9);
+}
+
+
+.about-window h2, .privacy-window h2, .term-window h2 {
+  font-size: 2.5rem;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 51px;
+}
+
+.about-window span, .privacy-window span, .term-window span {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: normal;
+  width: 90%;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+
+
+
+.term-window ul {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: normal;
+  width: 90%;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}

@@ -1,0 +1,69 @@
+{% load static %}
+{% load allauth i18n %}
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="author" content="Djabali Abderrahim">
+  <meta name="language" content="English">
+  <meta name="viewport" content="width=1080">
+  <meta name="theme-color" content="#FFA500">
+  <meta name="robots" content="index, follow">
+  <meta name="copyright" content="© 2024 FOXNOTE">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+  <meta name="rating" content="General">
+  <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="{% static 'images/icon page.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+
+  <title>FOXNOTE | Logout</title>
+
+
+
+
+    <link rel="stylesheet" href="{% static 'account/css/logout.css' %}">
+</head>
+
+
+<header>
+    <h1>FOXNOTE</h1>
+</header>
+<div class="content">
+
+        {% block content %}
+            {% element h2 %}
+                {% trans "Sign Out" %}
+            {% endelement %}
+            {% element p %}
+                {% trans 'Are you sure you want to sign out?' %}
+            {% endelement %}
+            <span class="bay-message">See You Later !!</span>
+            {% url 'account_logout' as action_url %}
+            {% element form method="post" action=action_url no_visible_fields=True %}
+                {% slot body %}
+                    {% csrf_token %}
+                    {{ redirect_field }}
+                {% endslot %}
+                {% slot actions %}
+                    <button type="submit" class="pushable">
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                        <span class="front"> 
+                            {% trans 'Sign Out' %} 
+                        </span>
+                    </button>
+                {% endslot %}
+            {% endelement %}
+        {% endblock content %}
+
+
+        <script>
+            setTimeout(() => {
+                document.body.style.visibility = "visible";
+                document.body.style.opacity = "1";  // This will trigger the fade-in effect
+              }, 3000) 
+        </script>
+</div>
+

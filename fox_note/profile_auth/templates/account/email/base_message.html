@@ -1,0 +1,26 @@
+{% load i18n %}
+<html>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+    <table style="width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; border-collapse: collapse; background-color: #f9f9f9;">
+        <tr>
+            <td style="padding: 10px; text-align: center;">
+                <h1 style="
+                            font-size: 2rem; 
+                            color: #f29c1f;">
+                      FOXNOTE
+                  </h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% block content %}{% endblock %}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; text-align: center; font-size: 12px; color: #f29c1f;">
+                {% blocktrans with site_name=current_site.name %}Thank you for using <a href="{{ site_name }}">FOXNOTE!</a>{% endblocktrans %}
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

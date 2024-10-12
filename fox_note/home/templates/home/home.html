@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="author" content="Djabali Abderrahim">
+  <meta name="language" content="English">
+  <meta name="viewport" content="width=1080">
+  <meta name="theme-color" content="#FFA500">
+  <meta name="robots" content="index, follow">
+  <meta name="copyright" content="© 2024 FOXNOTE">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+  <meta name="rating" content="General">
+  <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="{% static 'images/icon page.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+
+  <title>FOXNOTE | Home</title>
+
+
+
+  <link rel="stylesheet" href="{% static "home/css/home.css" %}">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+  <!-- for the title -->
+  <header>
+    <h1>FOXNOTE</h1>
+  </header>
+
+
+  <!-- for the navbar -->
+  <nav> 
+    <div class="navbar-right-section">
+      <a href="http://127.0.0.1:8000/auth/accounts/signup">Sign up</a>
+      <a href="http://127.0.0.1:8000/auth/accounts/login">Sing in</a>
+    </div>
+  </nav>
+
+
+
+
+  <!-- wlcome section -->
+   <section class="welcome-section hidden-content">
+    <img class="" src="{%static 'home/images/holding pencil.png'%}" alt="wlcoming" loading="lazy" >
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Welcome <br> To <br> <span>FOXNOTE</span></h2>
+        </div>
+        <div class="card-back">
+          <span class="quote">Organize your notes effortlessly !</span>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- definition section -->
+   <section class="defenition-section hidden-content">
+    
+    <img class="" src="{%static 'home/images/quote.gif'%}" alt="quote" >
+
+    <div class="title">
+      <span class="title1"> 
+        <h2>What is FOXNOTE</h2>
+       <div class="go-corner">
+       </div>
+      </span>
+   </div>
+
+    <blockquote class="callout quote EN">
+      <b>FOXNOTE</b> is a versatile, user-friendly note-taking platform designed to help individuals stay organized and productive. Whether you're managing personal tasks, FOXNOTE allows you to capture ideas, create detailed notes, and structure your thoughts effortlessly. With a focus on simplicity and functionality, it adapts to your workflow, making it easier than ever to manage notes across devices while keeping your data secure and accessible.
+   </section>
+
+
+  <!-- features section -->
+   <section class="features-section hidden-content ">
+    <div class="title">
+      <span class="title1"> 
+        <h2>Features</h2>
+       <div class="go-corner">
+       </div>
+      </span>
+   </div>
+
+
+    <div class="first-option hidden-content">
+      <span class="mynote">Simple design</span>
+      <img class="mynote-img" src="{% static 'home/images/mynote.png' %}" alt="simple">
+    </div>
+
+    <div class="second-option hidden-content">
+      <img class="mynote-edit-img" src="{% static 'home/images/mynote edit.png' %}" alt="edite">
+      <span class="mynote-edit">Editable</span>
+    </div>
+
+    <div class="third-option hidden-content">
+      <span class="mynote-ribbon">All you need</span>
+      <img class="mynote-ribbon-img" src="{% static 'home/images/mynote ribbon.png' %}" alt="edite">
+
+    </div>
+
+   </section>
+
+
+
+
+
+  <!-- pricing section -->
+   <section class="price-section hidden-content">
+
+    <div class="title">
+      <span class="title1"> 
+        <h2>Pricing</h2>
+       <div class="go-corner">
+       </div>
+      </span>
+   </div>
+
+    <div class="animated-text">
+      <span class="word">Get</span>
+      <span class="word">started</span>
+      <span class="word">with</span>
+      <span class="word">your</span>
+      <span class="word">free</span>
+      <span class="word">account</span>
+      <span class="word">today</span>
+      <span class="word">!</span>
+    </div>
+
+    <div class="badge ">100% Free!</div>
+
+    <img class="" src="{%static 'home/images/good.gif'%}" alt="good">
+   </section>
+
+   <section class="create-account-section hidden-content">
+    <a href="http://127.0.0.1:8000/auth/accounts/signup">Create Your Account Now !</a>
+    <img class="" src="{%static 'home/images/arrow.gif'%}" alt="good">
+   </section>
+
+
+
+
+   <!-- overlay -->
+   <div class="overlay" onclick="close_window()"></div>
+
+
+   <!-- about section -->
+   <div class="about-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>About</h2>
+    <span>FOXNOTE is a free, easy-to-use note-taking platform designed to help you stay organized and productive. Whether you're a student, professional, or just someone looking to jot down thoughts, FOXNOTE gives you the flexibility to create, edit, and customize your notes from any device. Our goal is to make note-taking as simple and efficient as possible, empowering you to stay focused on what matters most.</span>
+  </div>
+
+   <!-- privacy section -->
+   <div class="privacy-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>Privacy & Policy</h2>
+    <span>We collect minimal personal data to ensure your FOXNOTE experience is smooth and secure. Your information is never shared with third parties except for essential services like authentication. You can request to delete your account and data at any time.</span>
+  </div>
+
+
+  <!-- term section -->
+  <div class="term-window">
+    <button onclick="close_window()">&times;</button>
+    <h2>Terms of Service</h2>
+    <span>By accessing or using FOXNOTE, you agree to the following terms:</span>
+    <ul>
+      <li><b>User Responsibility:</b> You are responsible for all content you create, share, and manage on FOXNOTE. Ensure your notes comply with local laws and do not infringe upon third-party rights.</li>
+      <li><b>Privacy:</b> We value your privacy and will not share your data without consent, except as required by law. However, you are responsible for maintaining the confidentiality of your account.</li>
+      <li><b>Modifications:</b> FOXNOTE reserves the right to modify or terminate the service at any time without prior notice. Continued use of the platform after changes implies your acceptance of the new terms.</li>
+    </ul>
+  </div>
+
+
+  <footer class="footer">
+      <div class="footer-container">
+          <!-- Left Section: About & Links -->
+          <div class="footer-left">
+              <h3>FOXNOTE</h3>
+              <p>FOXNOTE is your free, secure, and customizable note-taking platform. Organize your thoughts and ideas effortlessly with our simple interface and powerful tools.</p>
+
+              <ul class="footer-links">
+                  <li><a class="about-link" href="#" onclick="show_window(event, 'about-window')">About</a></li>
+                  <li><a class="privacy-link" href="#" onclick="show_window(event, 'privacy-window')">Privacy & Policy</a></li>
+                  <li><a class="term-link" href="#" onclick="show_window(event, 'term-window')">Terms of Service</a></li>
+              </ul>
+          </div>
+
+          <!-- Middle Section: Contact Info -->
+          <div class="footer-middle">
+              <h4>Contact Us</h4>
+              <p>Email: <a href="mailto:official.foxnote@gmail.com">official.foxnote@gmail.com</a></p>
+          </div>
+
+          <!-- Right Section: Social Media -->
+          <div class="footer-right">
+              <h4>Connect with Us</h4>
+              <a href="https://www.linkedin.com/in/djabali-abderrahim-179615257/" target="_blank">
+                  <img src="{% static 'home/images/linkedin.svg' %}" alt="LinkedIn" class="social-icon">
+              </a>
+
+              <a href="https://www.linkedin.com/in/djabali-abderrahim-179615257/" target="_blank">
+                <img src="{% static 'home/images/linkedin.svg' %}" alt="LinkedIn" class="social-icon">
+              </a>
+              <!-- Add other social media icons here if needed -->
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p>© <span class="current-year"></span> FoxNote. All Rights Reserved.</p>
+      </div>
+  </footer>
+
+
+  <script src="{% static "home/javascript/home.js" %}"></script>
+</body>
+</html>

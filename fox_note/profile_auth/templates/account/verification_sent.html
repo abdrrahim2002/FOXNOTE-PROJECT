@@ -1,0 +1,95 @@
+
+{% load i18n %}
+{% load allauth %}
+{% load static %}
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="author" content="Djabali Abderrahim">
+  <meta name="language" content="English">
+  <meta name="viewport" content="width=1080">
+  <meta name="theme-color" content="#FFA500">
+  <meta name="robots" content="index, follow">
+  <meta name="copyright" content="© 2024 FOXNOTE">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+  <meta name="rating" content="General">
+  <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="{% static 'images/icon page.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+
+  <title>FOXNOTE | Email Check</title>
+
+
+
+<!-- the style -->
+<link rel="stylesheet" href="{% static "/account/css/verification_sent.css" %}">
+
+
+</head>
+
+<!-- the background -->
+<div class="reveal-background"></div>
+
+<!-- the header -->
+<header>
+	<h1>FOXNOTE</h1>
+</header>
+
+
+
+<!-- the messages popup -->
+<div class="popup-message-container">
+	{% if messages %}
+			
+		{% for message in messages %}
+
+			<div id="popup-{{ forloop.counter }}" class="popup-message">
+				<span class="message">{{ message }}</span>
+				<button onclick="closePopup('popup-{{ forloop.counter }}')">&times;</button>
+			</div>
+
+		{% endfor %}
+		
+	{% endif %}
+
+
+</div>
+
+
+
+<!-- the success message -->
+<div class="success-message-container">
+	<div class="success-message">
+		{% block content %}
+			{% element h2 %}
+				{% trans "Verify Your Email Address" %}
+			{% endelement %}
+			
+				{% element p %}
+						{% blocktrans %}We have sent an email to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.{% endblocktrans %}
+				{% endelement %}
+			
+		{% endblock content %}
+	</div>
+</div>
+
+
+
+
+
+
+
+  
+<!-- todo the animation of removing popup message -->
+<script src="{% static "account/js/remove-popup-message.js" %}"></script>
+
+<script>
+	setTimeout(() => {
+		document.body.style.visibility = "visible";
+		document.body.style.opacity = "1";  // This will trigger the fade-in effect
+	}, 5000)
+</script>

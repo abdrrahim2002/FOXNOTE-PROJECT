@@ -1,0 +1,449 @@
+/* import the header font family */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+/* import the regular font */
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+
+
+/* Basic body setup */
+body {
+  margin: 0;
+  padding: 0;
+  position: relative; /* Make sure the body is positioned to contain the pseudo-element */
+  overflow: hidden; /* Prevent scrollbars if the pseudo-element overflows */
+  overflow: hidden;
+  min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+}
+
+
+
+body::before {
+  content: ''; /* Necessary for pseudo-elements */
+  position: absolute; /* Position it absolutely to cover the entire body */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/background/wave type 7.svg'); /* Your SVG background image */
+  background-size: cover; /* Ensure the image covers the pseudo-element */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the background image */
+  opacity: 1; /* Start with the background image hidden */
+  z-index: -1; /* Place it behind other content */
+  /* animation: fadeIn 0.5s cubic-bezier(.47,0,.74,.71) forwards; */ /* Animate the opacity */
+  animation: wipe 2s cubic-bezier(.55,.06,.68,.19) forwards;
+}
+
+
+@keyframes wipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+
+
+/* Header styling */
+header h1 {
+  font-size: 4rem;
+  color: #f29c1f; /* Orange color for FOXNOTE */
+  margin-bottom: 20px;
+  font-family: "Caveat Brush", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 75;
+  margin: 0;
+  margin-left: 35px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s ease;
+
+}
+
+
+/* style the message container */
+.popup-message-container {
+  height: 100px; /* Fixed height */
+  overflow-y: auto;/* Enables scrolling when the content exceeds the height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5px; /* Space between the message box and icon */
+
+  
+
+}
+
+
+/* style the message list */
+
+
+
+
+.popup-message {
+  display: flex;
+  width: fit-content;
+  justify-content: space-evenly;
+  align-items: center;  
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+
+
+.popup-message {
+  padding: 0px 10px;
+  background: rgb(207, 207, 207);
+  border: solid 3px rgb(113, 113, 113);
+  border-radius: 7px;
+  transition: background 5s  cubic-bezier(0,1.59,0,-0.01), opacity 0.5s ease, transform 1.5s;
+  opacity: 1;
+
+  cursor: default;
+}
+
+
+.popup-message:hover {
+  background: rgb(242, 242, 242);
+
+}
+ 
+
+/* styling the list of message */
+.popup-message-move {
+  transform: translateX(-500px);
+  opacity: 0;
+}
+
+.popup-message span{
+  padding: 10px 5px;
+  font-size: 25;
+}
+
+.popup-message button {
+  background: none;
+  border: none;
+  margin: 0;
+  font-size: 40;
+}
+
+.popup-message button:hover {
+  color: rgb(255, 0, 0);
+}
+
+
+
+
+
+/* style the success message */
+.success-message-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  align-items: center;
+  height: 100vh;
+
+
+
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  height: fit-content;
+  width: 600px;
+
+
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+
+
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.088) 76%, rgba(255, 255, 255, 0.296) 100%);
+  backdrop-filter: blur(5px);
+
+  box-shadow: 0px 0 25px 0px #ffffff59 inset;
+}
+
+.success-message h2 {
+  font-weight: bold;
+  font-size: 40;
+  margin-bottom: 15px;
+}
+
+.success-message p {
+  font-size: 25;
+}
+
+
+
+
+.success-message a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.success-message a:visited {
+  color: #cfcfcf;
+}
+
+.success-message a:hover {
+  color: rgb(255, 255, 255);
+}
+
+
+
+
+/* styling google button */
+
+.google-anchor-tag {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.google-anchor-tag:hover {
+  text-decoration: none;
+}
+
+
+.button {
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 35px;
+  align-items: center;
+  border: solid black 2px;
+  outline: none;
+  cursor: pointer;
+  background: whitesmoke;
+}
+
+.svg {
+  height: 25px;
+  margin-right: 10px;
+}
+
+.button .text {
+  z-index: 10;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.button:hover .text {
+  animation: text forwards 0.3s;
+  /*color: white;*/
+}
+
+@keyframes text {
+  from {
+    color: black;
+    text-decoration: none;
+  }
+
+  to {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.svg {
+  z-index: 6;
+}
+
+.button:hover::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 300px;
+  animation: wave1 2.5s ease-in-out forwards;
+}
+
+.button:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 300px;
+  animation: wave2 2.5s ease-in-out forwards;
+}
+
+@keyframes wave1 {
+  0% {
+    z-index: 1;
+    background: #EB4335;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  1% {
+    z-index: 1;
+    background: #EB4335;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  25% {
+    z-index: 1;
+    background: #EB4335;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  26% {
+    z-index: 3;
+    background: #34A853;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  50% {
+    z-index: 3;
+    background: #34A853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  70% {
+    z-index: 3;
+    background: #34A853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  100% {
+    z-index: 3;
+    background: #34A853;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    z-index: 2;
+    background: #FBBC05;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  11% {
+    z-index: 2;
+    background: #FBBC05;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  35% {
+    z-index: 2;
+    background: #FBBC05;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  39% {
+    z-index: 2;
+    background: #FBBC05;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  40% {
+    z-index: 4;
+    background: #4285F4;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  64% {
+    z-index: 4;
+    background: #4285F4;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+
+  100% {
+    z-index: 4;
+    background: #4285F4;
+    width: 800px;
+    height: 800px;
+    opacity: 1;
+  }
+}
+
+.button:hover .red {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.1s;
+}
+
+.button:hover .yellow {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.3s;
+}
+
+.button:hover .green {
+  animation: disappear 0.1s forwards;
+  animation-delay: 0.7s;
+}
+
+.button:hover .blue {
+  animation: disappear 0.1s forwards;
+  animation-delay: 1.1s;
+}
+
+@keyframes disappear {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(100);
+  }
+}
+
+
+
+/* center the google icon in the message beside the email address */
+span svg {
+  vertical-align: sub;
+}

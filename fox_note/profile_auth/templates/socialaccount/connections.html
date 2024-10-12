@@ -1,0 +1,110 @@
+{% load static %}
+{% load i18n %}
+{% load allauth %}
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Djabali Abderrahim">
+    <meta name="language" content="English">
+    <meta name="viewport" content="width=1080">
+    <meta name="theme-color" content="#FFA500">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="© 2024 FOXNOTE">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FOXNOTE is a free, user-friendly note-taking platform that helps you organize your ideas and stay productive. Sign up now to manage your notes effortlessly!">
+    <meta name="rating" content="General">
+    <meta name="keywords" content="note-taking, free notes, FOXNOTE, productivity, online notes, free online note, note, text note, note text, free text note, free note text, online text note, free online text note, organize notes">
+  
+    <!-- Favicon and Icons -->
+    <link rel="icon" href="{% static 'images/icon page.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icon page.png' %}">
+  
+    <title>FOXNOTE | Third Party</title>
+
+
+
+    <link rel="stylesheet" href="{% static "/socialaccount/css/connections.css" %}">
+</head>
+
+<div class="reveal-background"></div>
+
+
+<!-- for the title -->
+<header>
+	<h1>FOXNOTE</h1>
+</header>
+
+
+<!-- for the success message -->
+<div class="success-message-container">
+    <div class="success-message">
+        {% block content %}
+            {% element h1 %}
+                {% trans "Account Connections" %}
+            {% endelement %}
+
+            <!-- if the user have a third partie methode -->
+            {% if form.accounts %}
+                {% element p %}
+                    {% blocktrans %}You can sign in to your account using any of the following third-party accounts:{% endblocktrans %}
+                {% endelement %}
+
+                <!-- looping and get his related account in third partie authantiaction in this case I have only 1 witch is google -->
+                {% for acc in form.fields.account.choices %}
+                    {% with account=acc.0.instance.get_provider_account %}
+                        {% setvar rado_id %}
+                            id_account_{{ account.account.pk }}
+                        {% endsetvar %}
+                        {% setvar tags %}
+                            socialaccount,{{ account.account.provider }}
+                        {% endsetvar %}
+                        {%element p%}
+                            {{ account }}
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262" class="svg">
+                                <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" class="blue"></path>
+                                <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" class="green"></path>
+                                <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" class="yellow"></path>
+                                <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" class="red"></path>
+                            </span>
+                        {%endelement%}
+                    {% endwith %}
+                {% endfor %}
+
+                <a href="{% url 'profile-management' request.user.username %}">Back to profile </a>
+ 
+
+
+                <!-- if the user don't have a third partie methode -->
+            {% else %}
+                {% element p %}
+                    {% trans 'You currently have no third-party accounts connected to this account.' %}
+                {% endelement %}
+                {% element h2 %}
+                    {% trans 'Add a Third-Party Account' %}
+                {% endelement %}
+                <a class='google-anchor-tag' title="Google" href="/auth/accounts/google/login/?process=connect">
+                    <button class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262" class="svg">
+                        <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" class="blue"></path>
+                        <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" class="green"></path>
+                        <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" class="yellow"></path>
+                        <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" class="red"></path>
+                        </svg>
+                        <span class="text">Google</span>
+                    </button>
+                </a>
+            {% endif %}
+        {% endblock content %}
+    </div>
+</div>
+
+
+<script>
+    setTimeout(() => {
+        document.body.style.visibility = "visible";
+        document.body.style.opacity = "1";  // This will trigger the fade-in effect
+      }, 5000)
+</script>
