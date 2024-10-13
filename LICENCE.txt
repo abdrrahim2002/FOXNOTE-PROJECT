@@ -1,0 +1,13 @@
+Copyright © 2024 Djabali Abderrahim
+
+All rights reserved.
+
+This software and its associated documentation files (the "Software") are proprietary and confidential. Unauthorized use, modification, reproduction, distribution, or disclosure of this Software, in whole or in part, is strictly prohibited.
+
+The Software may not be copied, modified, published, distributed, sublicensed, or sold without prior written permission from the copyright holder.
+
+By using this Software, you agree to comply with all applicable laws and regulations and acknowledge that any violation of these terms may result in legal action.
+
+For inquiries, please contact:
+Djabali Abderrahim
+python.py2002@gmail.com
