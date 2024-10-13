@@ -26,7 +26,7 @@ Quickly find notes with our efficient search feature.
 
  - **Text Customization**
   
-  <div align="center">>
+  <div align="center">
     <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/mynote%20ribbon.png?token=GHSAT0AAAAAACYEZLLLGMPLICR3PO3FHFBCZYL2WNQ" alt="customizable">
   </div>
 
@@ -39,7 +39,7 @@ Quickly find notes with our efficient search feature.
 
   - **Organize your note**
   
-  <div align="center">>
+  <div align="center">
     <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/foxnote%20overview%20customizable.png?token=GHSAT0AAAAAACYEZLLKM3ZNOMFEOMWCFBHCZYL2YEQ" alt="organize">
   </div>
 
