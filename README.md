@@ -5,16 +5,16 @@
 
 ## Quick Look
 ### User-Friendly Interface
-![overview of the project](https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/foxnote%20overview.png?token=GHSAT0AAAAAACYEZLLKQ7KSJLVVCCXL7BG6ZYL2M4Q)
+![overview of the project](https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/foxnote%20overview.png)
 
 The application provides an intuitive design that enhances user experience.
 
 ### Features Include:
   - **Search Functionality**
 <div align="center">
-  <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/search%20title.png?token=GHSAT0AAAAAACYEZLLKKP52VD3XI7RQLTJKZYL2XFQ" alt="search by Title" width='49%'>
-  <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/search%20tag.png?token=GHSAT0AAAAAACYEZLLK6IQ6F53BHKHWFYBUZYL2XHA" alt="search by Tag" width='49%'>
-  <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/search%20advance.png?token=GHSAT0AAAAAACYEZLLLANALLOM7BNUGXBJUZYL2XIQ" alt="search advance" width='49%'>
+  <img src="https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/search%20title.png" alt="search by Title" width='49%'>
+  <img src="https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/search%20tag.png" alt="search by Tag" width='49%'>
+  <img src="https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/search%20advance.png" alt="search advance" width='49%'>
 </div>
 
 <br>
@@ -27,7 +27,7 @@ Quickly find notes with our efficient search feature.
  - **Text Customization**
   
   <div align="center">
-    <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/mynote%20ribbon.png?token=GHSAT0AAAAAACYEZLLLGMPLICR3PO3FHFBCZYL2WNQ" alt="customizable">
+    <img src="https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/mynote%20ribbon.png" alt="customizable">
   </div>
 
 <br>
@@ -40,7 +40,7 @@ Quickly find notes with our efficient search feature.
   - **Organize your note**
   
   <div align="center">
-    <img src="https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/foxnote%20overview%20customizable.png?token=GHSAT0AAAAAACYEZLLKM3ZNOMFEOMWCFBHCZYL2YEQ" alt="organize">
+    <img src="https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/foxnote%20overview%20customizable.png" alt="organize">
   </div>
 
   Easily organize your notes.
@@ -51,7 +51,7 @@ Quickly find notes with our efficient search feature.
   
 - **Profile Management**
 
-![Profile Management](https://raw.githubusercontent.com/abdrrahim2002/PROJECTS-IMAGES/refs/heads/main/foxnote/profile%20managment.png?token=GHSAT0AAAAAACYEZLLKFVG2LKHB4BKJPSHCZYL2VIQ)
+![Profile Management](https://raw.githubusercontent.com/abdrrahim2002/FOXNOTE-PROJECT/refs/heads/main/project-photo/profile%20management.png)
 
   Users can manage their profiles effectively. In the Profile Management section, users can:
   - View their personal information.
