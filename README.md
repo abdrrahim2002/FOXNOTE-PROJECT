@@ -64,6 +64,7 @@ Quickly find notes with our efficient search feature.
 
 
 <br>
+
 ## Technologies Used
 - Django framework, django-allauth
 - MySQL
