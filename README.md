@@ -64,6 +64,16 @@ Quickly find notes with our efficient search feature.
 
 
 <br>
+## Technologies Used
+- Django framework, django-allauth
+- MySQL
+- HTML
+- CSS
+- JavaScript, Quilljs
+- AJAX, RESTful APIs 
+
+
+<br>
 <br>
 
 ## Installation and Configuration
