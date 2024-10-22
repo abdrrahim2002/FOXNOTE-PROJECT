@@ -1,7 +1,7 @@
 # FOXNOTE
 
 ## Purpose
-**FOXNOTE** is a web application designed for efficient note-taking and organization.
+**FOXNOTE** is a web application designed for efficient note-taking and organization you can see it live by clicking this [link](https://abd200203.pythonanywhere.com/).
 
 ## Quick Look
 ### User-Friendly Interface
